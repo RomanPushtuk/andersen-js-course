@@ -72,7 +72,8 @@
 
 // console.log('=============');
 
-// console.log('task10 old', task10Old()); // {name: 'Max', age: 12, color: red}
-// console.log('task10 new', task10New()); // {name: 'Max', age: 12, color: red}
+// console.dir(task10Old()); // {name: 'Max', age: 12, color: red}
+// console.log('=============');
+// console.dir(task10New()); // {name: 'Max', age: 12, color: red}
 
 // console.log('=============');

@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 /**
  * Реализовать функцию without в этом файле, и экспортировать ее.
  *
@@ -11,3 +12,14 @@
  * console.log(without([2, 1, 2, 3], 1, 2)) -> [3]
  * console.log(without([2, 1, 10, 20], 1, 2)) -> [10, 20]
  */
+export const without = (arr, ...arg) => {
+  return arr.filter(item1 => {
+    if (
+      !arg.some(item => {
+        return item1 === item;
+      })
+    )
+      return true;
+    return false;
+  });
+};
