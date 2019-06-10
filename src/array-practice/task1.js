@@ -16,14 +16,6 @@
  * console.log(any([0, 0, 0, 0])); -> false
  */
 
-export const any = (arr, ...rest) => {
-  // Если не передали колбек
-  if (rest[0] === undefined) {
-    return arr.some(num => num);
-  }
-  // если передали колбек
-  if (typeof rest[0] === 'function') {
-    return arr.some(num => rest[0](num));
-  }
-  throw new Error('Второй передаваемый аргумент не является функцией');
+export const any = (arr, cb = x => x) => {
+  return arr.some(cb);
 };

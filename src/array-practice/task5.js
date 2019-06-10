@@ -15,14 +15,12 @@
  * generator.next(); -> 'Complete!'
  */
 export function createGenerator(arr) {
-  let buf = -1;
+  let buf = 0;
   return {
-    next: function() {
+    next() {
+      const current = arr[buf];
       buf += 1;
-      if (buf < arr.length) {
-        return arr[buf];
-      }
-      return 'Complete!';
+      return current !== undefined ? current : 'Complete!';
     },
   };
 }

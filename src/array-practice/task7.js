@@ -13,6 +13,5 @@
  * console.log(take([1, 2, 3], 2)); -> [1, 2]
  */
 export const take = (arr, num) => {
-  const arr1 = arr.slice();
-  return arr1.filter(val => val !== num);
+  return num >= arr.length ? arr : arr.slice(0, num);
 };

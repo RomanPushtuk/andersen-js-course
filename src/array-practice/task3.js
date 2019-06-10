@@ -12,6 +12,8 @@
  */
 
 export const forEachRight = (arr, cb) => {
-  const arr1 = arr.slice();
-  arr1.reverse().forEach(item => cb(item));
+  arr
+    .slice()
+    .reverse()
+    .forEach(item => cb(item));
 };

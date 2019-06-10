@@ -22,7 +22,7 @@
  * console.log(transformArrayToNumber([10, 20, 30], (acc, item) => acc - item)); -> -60
  */
 export const transformArrayToNumber = (arr, fun, num = 0) => {
-  arr.unshift(num);
-  const result = arr.reduce(fun);
-  return result;
+  return arr.reduce(fun, num);
 };
+
+// ([10, 20, 30], (acc, item) => acc + item), 1);

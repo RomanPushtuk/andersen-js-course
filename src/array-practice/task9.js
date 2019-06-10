@@ -12,13 +12,10 @@
  * console.log(indexOfAll([1, 2, 3], 4)); -> []
  */
 export const indexOfAll = (arr, num) => {
-  return arr
-    .map((current, index) => {
-      if (current === num) {
-        return index;
-      }
-    })
-    .filter(item => {
-      return item !== undefined;
-    });
+  return arr.reduce((result, item, index) => {
+    if (item === num) {
+      result.push(index);
+    }
+    return result;
+  }, []);
 };

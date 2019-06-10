@@ -12,14 +12,6 @@
  * console.log(without([2, 1, 2, 3], 1, 2)) -> [3]
  * console.log(without([2, 1, 10, 20], 1, 2)) -> [10, 20]
  */
-export const without = (arr, ...arg) => {
-  return arr.filter(item1 => {
-    if (
-      !arg.some(item => {
-        return item1 === item;
-      })
-    )
-      return true;
-    return false;
-  });
+export const without = (arr, ...args) => {
+  return arr.filter(element => !args.includes(element));
 };
