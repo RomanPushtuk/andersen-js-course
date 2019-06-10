@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 /**
  * Реализовать функцию membersOnActiveMeetups в этом файле, и экспортировать ее.
  *
@@ -18,3 +19,9 @@
 // ];
 
 // function membersOnActiveMeetups(meetups) {}
+
+export const membersOnActiveMeetups = meetups => {
+  return meetups.reduce((accum, { isActive, members }) => {
+    return isActive ? accum + members : accum;
+  }, 0);
+};

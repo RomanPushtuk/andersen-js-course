@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 /**
  * Реализовать функцию arrayDiff в этом файле, и экспортировать ее.
  *
@@ -15,3 +16,9 @@
  * console.log(arrayDiff([1, 2, 3], [1, 2, 4])); -> [3, 4]
  * console.log(arrayDiff([1, 3, 3, 4], [1, 3, '4'])); -> [4, '4']
  */
+
+export const arrayDiff = (arr1, arr2) => {
+  const res1 = arr1.filter(item => !arr2.includes(item));
+  const res2 = arr2.filter(item => !arr1.includes(item));
+  return res1.concat(res2);
+};

@@ -72,7 +72,19 @@
 
 // console.log('=============');
 
-// console.log('task10 old', task10Old()); // {name: 'Max', age: 12, color: red}
-// console.log('task10 new', task10New()); // {name: 'Max', age: 12, color: red}
+// console.dir(task10Old()); // {name: 'Max', age: 12, color: red}
+// console.log('=============');
+// console.dir(task10New()); // {name: 'Max', age: 12, color: red}
 
 // console.log('=============');
+
+// import { any } from './array-practice/task1';
+// import { arrayDiff } from './array-practice/task2';
+// import { forEachRight } from './array-practice/task3';
+// import { task4Old, task4New } from './array-practice/task4';
+// import { createGenerator } from './array-practice/task5';
+// import { transformArrayToNumber } from './array-practice/task6';
+// import { take } from './array-practice/task7';
+// import { without } from './array-practice/task8';
+// import { indexOfAll } from './array-practice/task9';
+// import { membersOnActiveMeetup } from './array-practice/task10';
