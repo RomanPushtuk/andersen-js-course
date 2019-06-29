@@ -15,26 +15,24 @@
 // multiRequestParallel();
 // multiRequestConsist();
 
-// import { getResolvedPromise } from './asynchronous-programming/6';
-// const resolve = value => {
-//   if (value > 300) {
-//     throw new Error('Ошибка');
-//   }
-//   console.log(value);
-// };
-// try {
-//   getResolvedPromise(200).then(resolve);
-// } catch (err) {
-//   console.log(err);
-// } finally {
-//   console.log('This is Finaly');
-// }
+import { getResolvedPromise } from './asynchronous-programming/6';
+const resolve = value => {
+  if (value > 300) {
+    throw new Error('Ошибка');
+  }
+  console.log(value);
+  return value;
+};
+getResolvedPromise(400)
+  .then(resolve)
+  .catch(console.log)
+  .finally(() => console.log('This is Finaly'));
 
 // import { foo } from './asynchronous-programming/7';
 // foo();
 
 // import { foo } from './asynchronous-programming/8';
-// foo('https://sonplaceholder.typicode.com/users');
+// foo('https://jsonplaceholder.typicode.com/users');
 
 // import { foo } from './asynchronous-programming/9';
 // foo();

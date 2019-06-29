@@ -15,16 +15,12 @@ const multiRequestParallel = async () => {
 };
 
 const multiRequestConsist = async () => {
-  const [url1, url2, url3, url4, url5] = urls;
-  const result = [];
-  result.push(await fetch(url1));
-  result.push(await fetch(url2));
-  result.push(await fetch(url3));
-  result.push(await fetch(url4));
-  result.push(await fetch(url5));
-  result.forEach(async item => {
-    console.log(await item.json());
+  const promises = urls.map(item => {
+    return fetch(item);
   });
+  for await (let result of promises) {
+    console.log(await result.json());
+  }
 };
 
 export { multiRequestParallel, multiRequestConsist };

@@ -1,6 +1,7 @@
 const asyncBar = async () => 'Some string';
 const foo = async () => {
-  asyncBar().then(console.log);
+  const result = await asyncBar();
+  console.log(result);
 };
 
-export { foo };
+export default foo;

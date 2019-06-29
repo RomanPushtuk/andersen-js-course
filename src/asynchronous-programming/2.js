@@ -13,6 +13,7 @@ const successCb = result => {
 };
 
 const failureCb = err => {
+  console.log('Failure parse!');
   console.log(err);
 };
 
