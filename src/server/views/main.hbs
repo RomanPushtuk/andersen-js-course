@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Главная</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <h1>Все записи</h1>
+    {{#each names}}
+      <li><a href="{{server_url}}/main/{{id}}">{{name}}</a></li>
+    {{/each}}
+</body>
+<html>
