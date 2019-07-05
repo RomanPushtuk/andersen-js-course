@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <title>Клиент серверное приложение</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+        База приморских отелей
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+          Добавить отель
+        </button>
+      </h1>
+      <h5>Реализация информационной системы "База отелей"</h5>
+
+      <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th>Имя</th>
+            <th>Звезды</th>
+            <th>Комнаты</th>
+            <th>Адрес</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="table"></tbody>
+      </table>
+    </div>
+    <h5 class="text-center text-danger" id="infoConnect"></h5>
+
+    <!-- Модальное окно для добавление данных -->
+    <div  class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLongTitle">Добавление данных</h4>
+            <button id="closeAddModal" type="button"class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Форма в модельном окне -->
+            <form class="">
+              <div class="form-group">
+                <label for="inputName">Имя гостиницы</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputName"
+                  placeholder="Введите имя гостиницы"
+                />
+                <small id="help" class="form-text text-muted"
+                  >Ввведи название вашей знакомой гостиницы</small
+                >
+              </div>
+              <div class="form-group">
+                <label for="selectStars">Выберете количество звезд</label>
+                <select class="form-control" id="selectStars">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="selectRooms">Введите количество комнат</label>
+                <select class="form-control" id="selectRooms">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
+                  <option>13</option>
+                  <option>14</option>
+                  <option>15</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="inputAddress">Введите адрес</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputAddress"
+                  placeholder="Адрес гостиницы"
+                />
+              </div>
+            </form>
+            <!-- Конец формы в модельном окне -->
+          </div>
+          <!-- Кнопка добавления данных -->
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            <button
+              id="addHostelButton"
+              type="button"
+              class="btn btn-primary"
+              data-dismiss="modal"
+            >
+              Добавить
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Модальное окно для изменение данных -->
+    <div class="modal fade" id="modalChange" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLongTitle">Редактировать данные</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Тут будет хранится id элемента которого мы ходим изменить -->
+            <input type="text" id="idChengeItem" class="d-none" />
+            <form class="">
+              <div class="form-group">
+                <label for="inputName">Имя гостиницы</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="changeName"
+                  placeholder="Введите имя гостиницы"
+                />
+                <small id="help" class="form-text text-muted"
+                  >Ввведи название вашей знакомой гостиницы</small
+                >
+              </div>
+              <div class="form-group">
+                <label for="selectStars">Выберете количество звезд</label>
+                <select class="form-control" id="changeSelectStars">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="selectRooms">Введите количество комнат</label>
+                <select class="form-control" id="changeSelectRooms">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
+                  <option>13</option>
+                  <option>14</option>
+                  <option>15</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="inputAddress">Введите адрес</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="changeAddress"
+                  placeholder="Адрес гостиницы"
+                />
+              </div>
+            </form>
+            <!-- Конец формы в модельном окне -->
+          </div>
+          <!-- Кнопка добавления данных -->
+          <div class="modal-footer">
+            <button
+              id="changeHostelButton"
+              type="button"
+              class="btn btn-primary"
+              data-dismiss="modal"
+            >
+              Редактировать
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Модальное окно для удаления данных  -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <input type="text" id="idDeleteItem" class="d-none" />
+            <h5 class="modal-title" id="exampleModalLabel">
+              Вы действиетельно хотитите удалить данные?
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div id="modalBodyData" class="modal-body">
+            ДАННЫЕ
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+            <button
+              id="deleteHostelButton"
+              type="button"
+              class="btn btn-danger"
+              data-dismiss="modal"
+            >
+              Удалить
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script> -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
